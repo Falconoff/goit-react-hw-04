@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const notify = () => toast.error('Text must be entered to search for images');
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSearch }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
 
@@ -16,7 +16,8 @@ const SearchBar = ({ onSubmit }) => {
       // console.log('search is EMPTY');
     }
 
-    onSubmit(inputValue);
+    onSearch(inputValue);
+    evt.currentTarget.reset();
   };
 
   return (

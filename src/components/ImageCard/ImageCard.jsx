@@ -1,10 +1,10 @@
 const ImageCard = ({ image }) => {
-  console.log('Descr:', image);
-  console.log('Hello');
+  // console.log('Descr:', image);
+  // console.log('Hello');
 
   return (
     <div>
-      <img src="" alt="" />
+      <img src={image.urls.small} alt={image.alt_description} />
     </div>
   );
 };
