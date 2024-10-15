@@ -1,6 +1,7 @@
 import ImageCard from '../ImageCard/ImageCard';
+import css from './ImageGallery.module.css';
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images, showBigImg }) => {
   console.log('images in ImageGallery: ', images);
 
   return (
@@ -11,8 +12,8 @@ const ImageGallery = ({ images }) => {
         {images !== null &&
           images.map(image => {
             return (
-              <li key={image.id}>
-                <ImageCard image={image} />
+              <li className={css.card} key={image.id}>
+                <ImageCard image={image} showBigImg={showBigImg} />
               </li>
             );
           })}

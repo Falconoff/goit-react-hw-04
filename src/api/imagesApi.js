@@ -11,7 +11,6 @@ axios.defaults.params = {
 
 export const getImages = async (searchValue, page) => {
   const { data } = await axios.get(
-    // `https://api.unsplash.com/search/photos/?client_id=${ACCESS_KEY}&query=cat&page=${page}`
     `?client_id=${ACCESS_KEY}&query=${searchValue}&page=${page}`
   );
 

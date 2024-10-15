@@ -1,10 +1,18 @@
-const ImageCard = ({ image }) => {
-  // console.log('Descr:', image);
-  // console.log('Hello');
+import css from './ImageCard.module.css';
 
+const ImageCard = ({ image, showBigImg }) => {
+  const handleClk = () => {
+    showBigImg(image);
+  };
   return (
     <div>
-      <img src={image.urls.small} alt={image.alt_description} />
+      <img
+        className={css.image}
+        src={image.urls.small}
+        alt={image.alt_description}
+        // onClick={showBigImg(image.urls.regular)}
+        onClick={handleClk}
+      />
     </div>
   );
 };
