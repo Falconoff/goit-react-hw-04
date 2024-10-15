@@ -10,7 +10,6 @@ const ImageCard = ({ image, showBigImg }) => {
         className={css.image}
         src={image.urls.small}
         alt={image.alt_description}
-        // onClick={showBigImg(image.urls.regular)}
         onClick={handleClk}
       />
     </div>

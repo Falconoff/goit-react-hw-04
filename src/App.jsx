@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import axios from 'axios';
 
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -9,8 +8,6 @@ import Loader from './components/Loader/Loader';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
-
-// const ACCESS_KEY = 'yrvwBCUKI7qmqnJcluc-l1RFruvgFppZ_BRTgitL-sY';
 
 function App() {
   const [images, setImages] = useState(null);
@@ -23,7 +20,6 @@ function App() {
   const [bigImg, setBigImg] = useState(null);
 
   const onSearch = inputValue => {
-    console.log('inputValue: ', inputValue);
     setSearchValue(inputValue);
     setImages(null);
     setPage(1);
@@ -32,20 +28,15 @@ function App() {
 
   const onLoadMore = () => {
     setPage(page + 1);
-    console.log('page: ', page);
   };
 
   const onCloseModal = () => {
     setIsModalOpen(false);
   };
-  const onOpenModal = () => {
-    setIsModalOpen(true);
-  };
 
   const showBigImg = imgData => {
     setIsModalOpen(true);
     setBigImg(imgData);
-    console.log('imgData received:', imgData);
   };
 
   useEffect(() => {
@@ -55,12 +46,7 @@ function App() {
       try {
         setIsLoading(true);
 
-        // setTimeout(async () => {
         const data = await getImages(searchValue, page);
-
-        console.log('data: ', data);
-        console.log('data.results: ', data.results);
-        // throw new Error('Server gone!');
 
         if (page !== 1) {
           setImages(prevImages => [...prevImages, ...data.results]);
@@ -68,12 +54,8 @@ function App() {
           setImages(data.results);
         }
         setTotalPages(data.total_pages);
-
-        // }, 2000);
       } catch (error) {
-        // console.log(error);
         setError(error.message);
-        // setError(error);
       } finally {
         setIsLoading(false);
       }
@@ -95,10 +77,6 @@ function App() {
       {isModalOpen && (
         <ImageModal onCloseModal={onCloseModal} bigImg={bigImg} />
       )}
-      {/* temp */}
-      <button type="button" onClick={onOpenModal}>
-        Open modal
-      </button>
     </div>
   );
 }

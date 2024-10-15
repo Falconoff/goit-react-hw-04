@@ -8,12 +8,10 @@ const SearchBar = ({ onSearch }) => {
     evt.preventDefault();
 
     const inputValue = evt.currentTarget.elements.search.value.trim();
-    // console.log('inputValue: ', inputValue);
 
     if (inputValue === '') {
       notify();
       return;
-      // console.log('search is EMPTY');
     }
 
     onSearch(inputValue);
