@@ -35,8 +35,8 @@ function App() {
   };
 
   const showBigImg = imgData => {
-    setIsModalOpen(true);
     setBigImg(imgData);
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
@@ -74,8 +74,13 @@ function App() {
       {images !== null && images.length === 0 && <p>I can`t find it</p>}
       {totalPages > page && <LoadMoreBtn onLoadMore={onLoadMore} />}
       {isLoading && <Loader />}
-      {isModalOpen && (
-        <ImageModal onCloseModal={onCloseModal} bigImg={bigImg} />
+
+      {bigImg && (
+        <ImageModal
+          onCloseModal={onCloseModal}
+          isModalOpen={isModalOpen}
+          bigImg={bigImg}
+        />
       )}
     </div>
   );
